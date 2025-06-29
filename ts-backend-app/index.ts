@@ -28,4 +28,4 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-//  npx tsx index.js
+//  npx tsx index.ts
