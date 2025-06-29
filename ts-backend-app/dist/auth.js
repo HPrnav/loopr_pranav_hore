@@ -3,7 +3,7 @@ import express from 'express';
 import { z } from 'zod';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { User } from './db';
+import { User } from './db.js';
 import dotenv from 'dotenv';
 dotenv.config();
 const router = express.Router();

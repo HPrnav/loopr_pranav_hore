@@ -1,7 +1,7 @@
 // filepath: ts-backend-app/transaction.ts
 import { Router, Request, Response } from 'express';
-import { Transaction } from './db';
-import { authMiddleware } from './auth';
+import { Transaction } from './db.js';
+import { authMiddleware } from './auth.js';
 
 const router = Router();
 
