@@ -6,6 +6,7 @@ import { SubHeading } from "../component/Subheading";
 import { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export const Signup = () => {
   const navigate = useNavigate();
@@ -15,9 +16,17 @@ export const Signup = () => {
   const [password, setpassword] = useState("");
 
   return (
-    <div className="min-h-screen   bg-[#181C23] flex justify-center items-center">
+    <div className="min-h-screen bg-[#181C23] flex justify-center items-center">
       <div className="flex flex-col justify-center">
-        <div className="rounded-lg  bg-[#232733] w-80 text-center p-6 shadow-lg">
+        <div className="rounded-lg bg-[#232733] w-80 text-center p-6 shadow-lg">
+          {/* Logo at the top */}
+          <div className="flex justify-center mb-4">
+            <img
+              src={logo}
+              alt="logo"
+              className="w-16 h-16 sm:w-20 sm:h-20 mx-auto object-contain"
+            />
+          </div>
           <Heading label={"Signup"} className="text-white" />
           <SubHeading
             label={"Enter your information to create an account"}

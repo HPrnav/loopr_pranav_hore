@@ -113,19 +113,19 @@ export const Transactions = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#181C23] p-8">
+    <div className="min-h-screen bg-[#181C23] p-2 sm:p-8">
       <Appbar />
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-6">Transactions</h2>
-        <div className="flex flex-wrap gap-4 mb-4 items-center">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Transactions</h2>
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-4 items-stretch sm:items-center">
           <button
             onClick={downloadCSV}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
           >
             Download CSV
           </button>
           <form
-            className="flex items-center gap-4"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
             onSubmit={handleSearchSubmit}
           >
             <input
@@ -133,12 +133,12 @@ export const Transactions = () => {
               placeholder="Search for anything..."
               value={search}
               onChange={handleSearch}
-              className="px-4 py-2 rounded bg-[#232733] text-white w-64 focus:outline-none"
+              className="px-4 py-2 rounded bg-[#232733] text-white w-full sm:w-64 focus:outline-none"
             />
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-3 py-2 rounded bg-[#232733] text-white"
+              className="px-3 py-2 rounded bg-[#232733] text-white w-full sm:w-auto"
             >
               {columns.map((col) => (
                 <option key={col.value} value={col.value}>
@@ -149,19 +149,19 @@ export const Transactions = () => {
             <select
               value={order}
               onChange={(e) => setOrder(e.target.value)}
-              className="px-3 py-2 rounded bg-[#232733] text-white"
+              className="px-3 py-2 rounded bg-[#232733] text-white w-full sm:w-auto"
             >
               <option value="asc">Asc</option>
               <option value="desc">Desc</option>
             </select>
             <button
               type="submit"
-              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 w-full sm:w-auto"
             >
               Search
             </button>
           </form>
-          <div className="flex items-center gap-2 ml-auto">
+          <div className="flex items-center gap-2 ml-0 sm:ml-auto">
             <label className="text-[#A3AED0]">Show</label>
             <select
               value={perPage}
@@ -176,14 +176,14 @@ export const Transactions = () => {
           </div>
         </div>
         <div className="bg-[#232733] rounded-lg shadow-lg overflow-x-auto">
-          <table className="min-w-full">
+          <table className="min-w-full text-sm">
             <thead>
               <tr className="text-[#A3AED0] text-left">
-                <th className="py-3 px-4">Name</th>
-                <th className="py-3 px-4">Date</th>
-                <th className="py-3 px-4">Category</th>
-                <th className="py-3 px-4">Amount</th>
-                <th className="py-3 px-4">Status</th>
+                <th className="py-3 px-2 sm:px-4">Name</th>
+                <th className="py-3 px-2 sm:px-4">Date</th>
+                <th className="py-3 px-2 sm:px-4">Category</th>
+                <th className="py-3 px-2 sm:px-4">Amount</th>
+                <th className="py-3 px-2 sm:px-4">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -202,7 +202,7 @@ export const Transactions = () => {
               ) : (
                 paginatedTransactions.map((tx) => (
                   <tr key={tx._id} className="border-b border-[#232733]">
-                    <td className="py-3 px-4 flex items-center gap-2">
+                    <td className="py-3 px-2 sm:px-4 flex items-center gap-2">
                       <img
                         src={tx.user_profile || "/default-avatar.png"}
                         alt={tx.user_id}
@@ -210,14 +210,14 @@ export const Transactions = () => {
                       />
                       <span className="text-white">{tx.user_id}</span>
                     </td>
-                    <td className="py-3 px-4 text-white">
+                    <td className="py-3 px-2 sm:px-4 text-white">
                       {tx.date ? new Date(tx.date).toLocaleDateString() : ""}
                     </td>
-                    <td className="py-3 px-4 text-white">
+                    <td className="py-3 px-2 sm:px-4 text-white">
                       {tx.category || "-"}
                     </td>
                     <td
-                      className={`py-3 px-4 font-semibold ${
+                      className={`py-3 px-2 sm:px-4 font-semibold ${
                         tx.amount > 0 ? "text-green-400" : "text-red-400"
                       }`}
                     >
@@ -227,7 +227,7 @@ export const Transactions = () => {
                         currency: "USD",
                       })}
                     </td>
-                    <td className="py-3 px-4">
+                    <td className="py-3 px-2 sm:px-4">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-bold ${
                           statusColors[tx.status] || "bg-gray-500 text-white"
@@ -244,7 +244,7 @@ export const Transactions = () => {
         </div>
         {/* Pagination controls */}
         {perPage !== "all" && totalPages > 1 && (
-          <div className="flex justify-center items-center gap-2 mt-6">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-2 mt-6">
             <button
               onClick={() => handlePageChange(page - 1)}
               disabled={page === 1}
